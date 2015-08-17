@@ -18,15 +18,17 @@ mongo.schema = {};
  * name : 이름
  * password : 비밀번호
  * email : 이메일
- * nickname : 닉네임
- * phone : 핸드폰 번호
- * address : 주소
- * ponit : 포인트 [마일리지]
- * grade : 회원 등급
- * favoriterecipes : 좋아하는 글 목록 - 해당 객체의 Object Id 값 or 글 번호 설정 예정
- * evaluaterecipes : 별점 단 레시피 목록 - 레시피 ID값 등록예정
- * orderinfo : 배송 정보 - 배송정보 객체의 ObjectID or 배송정보 아이디 설정 예정
- * registrationdate : 가입일자
+ * profile : {
+ *      nickname : 닉네임
+ *      phone : 핸드폰 번호
+ *      address : 주소
+ *      ponit : 포인트 [마일리지]
+ *      grade : 회원 등급
+ *      favoriterecipes : 좋아하는 글 목록 - 해당 객체의 Object Id 값 or 글 번호 설정 예정
+ *      evaluaterecipes : 별점 단 레시피 목록 - 레시피 ID값 등록예정
+ *      orderinfo : 배송 정보 - 배송정보 객체의 ObjectID or 배송정보 아이디 설정 예정
+ *      registrationdate : 가입일자
+ * }
  * */
 mongo.schema.member  = new Schema({
     _Id : Schema.Types.ObjectId,
@@ -52,6 +54,7 @@ mongo.schema.member  = new Schema({
  * title : 레시피 제목
  * description : 요리 간단 설명
  * complatephotopath : 메인 사진
+ * stuffs : 사용자 입력 재료
  * hashtag : 헤쉬 태그
  * * category : [{
  *      whos : 쉐프, 나, 다른사람 으로 구분 <대 분류>
@@ -88,7 +91,7 @@ mongo.schema.recipe = new Schema({
     title : String,
     description : String,
     complatephotopath : String,
-    materials : String,
+    stuffs : String,
     hashtag : [String],
     catergory : [{
         whos : String,
