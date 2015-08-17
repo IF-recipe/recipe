@@ -24,7 +24,8 @@ mongo.schema = {};
  * ponit : 포인트 [마일리지]
  * grade : 회원 등급
  * favoriterecipes : 좋아하는 글 목록 - 해당 객체의 Object Id 값 or 글 번호 설정 예정
- * orderInfo : 배송 정보 - 배송정보 객체의 ObjectID or 배송정보 아이디 설정 예정
+ * evaluaterecipes : 별점 단 레시피 목록 - 레시피 ID값 등록예정
+ * orderinfo : 배송 정보 - 배송정보 객체의 ObjectID or 배송정보 아이디 설정 예정
  * registrationdate : 가입일자
  * */
 mongo.schema.member  = new Schema({
@@ -40,7 +41,8 @@ mongo.schema.member  = new Schema({
         point : Number,
         grade : Number,
         favoriterecipes : [String],
-        orderInfo : [String],
+        evaluaterecipes : [String],
+        orderinfo : [String],
         registrationdate : {type: Date, default: Date.now}
     }
 });
@@ -48,6 +50,13 @@ mongo.schema.member  = new Schema({
 /**
  * 레시피 Object - shcema
  * title : 레시피 제목
+ * description : 요리 간단 설명
+ * complatephotopath : 메인 사진
+ * hashtag : 헤쉬 태그
+ * * category : [{
+ *      whos : 쉐프, 나, 다른사람 으로 구분 <대 분류>
+ *      foodKind : 음식 종류 ex) 한식, 일식, 중식, 분식, .....etc
+ * }],
  * steps : [{            <사진 & 내용 Obejct 로 배열로 저장됨>
  *      step : index
  *      photopath : 사진 저장 경로
@@ -61,12 +70,9 @@ mongo.schema.member  = new Schema({
  * registrationdate : 등록일
  * love : 좋아요 or 추천수
  * level : 레시피 등급 별점
- * cookingTime : 조리시간
- * category : [{
- *      whos : 쉐프, 나, 다른사람 으로 구분 <대 분류>
- *      foodKind : 음식 종류 ex) 한식, 일식, 중식, 분식, .....etc
- * }],
- * sale : { 판매유무
+ * see : 조회수
+ * cookingtime : 조리시간
+ * saleinfo : { 판매유무
  *      materials : [{
  *          kind : 종류
  *          name : 이름
@@ -80,6 +86,14 @@ mongo.schema.member  = new Schema({
  */
 mongo.schema.recipe = new Schema({
     title : String,
+    description : String,
+    complatephotopath : String,
+    materials : String,
+    hashtag : [String],
+    catergory : [{
+        whos : String,
+        foodkind : String
+    }],
     steps :[{
         step: Number,
         photopath : [String],
@@ -93,12 +107,9 @@ mongo.schema.recipe = new Schema({
     registrationdate : {type: Date, default: Date.now},
     love : Number,
     level : Number,
-    cookingTime : String,
-    catergory : [{
-        whos : String,
-        foodkind : String
-    }],
-    sale : {
+    see : Number,
+    cookingtime : String,
+    saleinfo : {
         materials : [{
             kind : String,
             name : String,
@@ -119,7 +130,7 @@ mongo.schema.recipe = new Schema({
  *      unit : 갯수
  *      price : 단가
  *  },
- *  memberInfo : {  <회원 정보>
+ *  memberinfo : {  <회원 정보>
  *      _Id : 회원 아이디
  *      phone : 핸드폰 번호
  *      address : 배송지 정보
