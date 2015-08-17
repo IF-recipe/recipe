@@ -155,8 +155,6 @@ mongo.schema.order = new Schema({
     orderdate : {type: Date, default: Date.now},
     totalprice : Number
 });
-
-
 /**
  *  모델
  *  */
