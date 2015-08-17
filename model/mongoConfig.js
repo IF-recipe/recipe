@@ -23,9 +23,9 @@ mongo.schema = {};
  * address : 주소
  * ponit : 포인트 [마일리지]
  * grade : 회원 등급
- * favoriteRecipes : 좋아하는 글 목록 - 해당 객체의 Object Id 값 or 글 번호 설정 예정
+ * favoriterecipes : 좋아하는 글 목록 - 해당 객체의 Object Id 값 or 글 번호 설정 예정
  * orderInfo : 배송 정보 - 배송정보 객체의 ObjectID or 배송정보 아이디 설정 예정
- * registrationDate : 가입일자
+ * registrationdate : 가입일자
  * */
 mongo.schema.member  = new Schema({
     _Id : Schema.Types.ObjectId,
@@ -35,58 +35,79 @@ mongo.schema.member  = new Schema({
     profile : {
         nickname : String,
         phone : String,
-        address : String,
-        photo : [String],
+        address : [String],
+        photo : String,
         point : Number,
         grade : Number,
-        favoriteRecipes : [String],
+        favoriterecipes : [String],
         orderInfo : [String],
-        registrationDate : {type: Date, default: Date.now}
+        registrationdate : {type: Date, default: Date.now}
     }
 });
 
 /**
  * 레시피 Object - shcema
  * title : 레시피 제목
- * Contents : [{            <사진 & 내용 Obejct 로 배열로 저장됨>
- *      photo : 사진 저장 경로
+ * steps : [{            <사진 & 내용 Obejct 로 배열로 저장됨>
+ *      step : index
+ *      photopath : 사진 저장 경로
  *      content : 내용
  * }],
  * reply : [{               <글쓴이 & 내용 Obejct 로 배열로 저장됨>
  *      content : 내용
- *      rwriter : 글쓴이
+ *      rwriter : 글쓴이 닉네임
  * }],
- * writer : 글쓴이
- * registrationDate : 등록일
+ * writer : 글쓴이 닉네임
+ * registrationdate : 등록일
  * love : 좋아요 or 추천수
  * level : 레시피 등급 별점
  * cookingTime : 조리시간
  * category : [{
  *      whos : 쉐프, 나, 다른사람 으로 구분 <대 분류>
  *      foodKind : 음식 종류 ex) 한식, 일식, 중식, 분식, .....etc
- * }]
+ * }],
+ * sale : { 판매유무
+ *      materials : [{
+ *          kind : 종류
+ *          name : 이름
+ *          amount : 수량
+ *          unit : 단위
+ *          price : 판매가격
+ *      }],
+ *      totalprice : 총액
+ * }
  * @type {mongo.mongoose.Schema}
  */
 mongo.schema.recipe = new Schema({
     title : String,
-    Contents :[{
-        photo : [String],
+    steps :[{
+        step: Number,
+        photopath : [String],
         content : [String]
     }],
     reply : [{
         content : String,
         rwriter : String
     }],
-    writer : [String],
-    registrationDate : {type: Date, default: Date.now},
+    writer : String,
+    registrationdate : {type: Date, default: Date.now},
     love : Number,
     level : Number,
     cookingTime : String,
     catergory : [{
         whos : String,
-        foodkint : String
-    }]
-
+        foodkind : String
+    }],
+    sale : {
+        materials : [{
+            kind : String,
+            name : String,
+            amount : Number,
+            unit : String,
+            price : Number
+        }],
+        totalprice : Number
+    }
 });
 
 /** 주문 정보 collection의 경우, 재료가격 및 총액 등 내부 속성들에 대한 변경 필요. **
@@ -103,8 +124,8 @@ mongo.schema.recipe = new Schema({
  *      phone : 핸드폰 번호
  *      address : 배송지 정보
  *  },
- *  orderDate : 주문일자
- *  totalPrice : 총액
+ *  orderdate : 주문일자
+ *  totalprice : 총액
  */
 
 mongo.schema.order = new Schema({
@@ -115,38 +136,15 @@ mongo.schema.order = new Schema({
         unit : String,
         price : Number
     }],
-    memberInfo :{
+    memberinfo :{
         _Id : Schema.Types.ObjectId,
         phone : String,
         address : String
     },
-    orderDate : {type: Date, default: Date.now},
-    totalPrice : Number
+    orderdate : {type: Date, default: Date.now},
+    totalprice : Number
 });
 
-/**
- * 레시피세트 - 레시피에 대한 재료 셋
- *  recipeId : 레시피 아이디
- *  materials : {   <레시피 재료>
- *      kine : 종류
- *      name : 이름
- *      amount : 수량
- *      unit : 갯수
- *      price : 단가
- *  },
- *  totalPrice : 총액
- */
-mongo.schema.recipeSet = new Schema({
-    recipeId : Schema.Types.ObjectId,
-    materials : [{
-        kind : String,
-        name : String,
-        amount : Number,
-        unit : String,
-        price : Number
-    }],
-    totalPrice : Number
-});
 
 /**
  *  모델
@@ -155,7 +153,6 @@ mongo.model = {};
 mongo.model.member = mongo.mongoose.model('member', mongo.schema.member);
 mongo.model.recipe = mongo.mongoose.model('recipe', mongo.schema.recipe);
 mongo.model.orderInfo = mongo.mongoose.model('orderInfo', mongo.schema.orderInfo);
-mongo.model.recipeSet = mongo.mongoose.model('recipeSet', mongo.schema.recipeSet);
 
 module.exports = mongo;
 
