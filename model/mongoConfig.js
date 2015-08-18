@@ -1,12 +1,18 @@
 /**
  * Created by parkbeomsoo on 15. 7. 30..
  */
-
-var config = require('./config');
+console.log("mongoConfig --call");
+var config = require('../server_setting/config');
 var mongo = {};
 
 mongo.mongoose = require('mongoose');
-mongo.mongoose.connect(config.mongodb.connectUrl);
+var db = mongo.mongoose.connect(config.mongodb.connectUrl).connection;
+
+db.on('error', console.error.bind(console, 'connection error -0-:'));
+db.once('open', function (callback) {
+    console.log("aaa");
+});
+
 var Schema = mongo.mongoose.Schema;
 
 /* 스키마 */
@@ -164,7 +170,7 @@ mongo.schema.order = new Schema({
 mongo.model = {};
 mongo.model.member = mongo.mongoose.model('member', mongo.schema.member);
 mongo.model.recipe = mongo.mongoose.model('recipe', mongo.schema.recipe);
-mongo.model.orderInfo = mongo.mongoose.model('orderInfo', mongo.schema.orderInfo);
+mongo.model.order = mongo.mongoose.model('order', mongo.schema.order);
 
 module.exports = mongo;
 

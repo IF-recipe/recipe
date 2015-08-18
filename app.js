@@ -11,6 +11,7 @@ var errorHandling = require('./server_setting/errorhandling_use');
 
 var serverSetting = require('./server_setting/server_use');
 
+var model = require('./model/mongoConfig');
 /**
  * middleware setting
  */
@@ -34,6 +35,5 @@ errorHandling.errorSetting(app);
  */
 
 serverSetting.serverStart(app);
-
 
 module.exports = app;
