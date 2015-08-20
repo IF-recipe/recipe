@@ -6,15 +6,10 @@ router.post('/photo/recipe/upload', function(req, res, next) {
     console.log("recipe photoUload -----");
     console.log(req.body);
     console.log(req.head);
+    console.log(req.params);
+    console.log(req.query);
     console.log(req.files);
-    console.log(req.file);
-    var multiparty = require('multiparty');
-    var form  = new multiparty.Form();
-    form.parse(req, function(err, fields, files){
-
-    });
-
-
+    console.log("------------req end")
 });
 
 router.all('/photo/profile/upload', function(req, res, next) {
