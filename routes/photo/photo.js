@@ -5,7 +5,7 @@ var router = express.Router();
 router.post('/photo/recipe/upload', function(req, res, next) {
     console.log("recipe photoUload -----");
     console.log(req.body);
-    console.log(req.head);
+    console.log(req.headers);
     console.log(req.params);
     console.log(req.query);
     console.log(req.files);
