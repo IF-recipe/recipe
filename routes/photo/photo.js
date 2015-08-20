@@ -1,6 +1,6 @@
 var fs = require('fs');
 var multer  = require('multer')
-var upload = multer({storage : "uploads/"})
+var upload = multer({dest : "uploads/"})
 var express = require('express');
 var router = express.Router();
 
