@@ -13,10 +13,15 @@ router.post('/photo/recipe/upload', function(req, res, next) {
     console.log("------------req end")
     var form = new multiparty.Form();
 
+
     form.parse(req, function(err, fields, files) {
-        res.writeHead(200, {'content-type': 'text/plain'});
-        res.write('received upload:\n\n');
-        res.end(util.inspect({fields: fields, files: files}));
+        Object.keys(fields).forEach(function(name){
+            console.log('got field named ' + name);
+        });
+
+        Object.keys(files).forEach(function(name) {
+            console.log('got file named ' + name);
+        });
     });
 });
 
