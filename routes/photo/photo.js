@@ -4,7 +4,7 @@ var upload = multer()
 var express = require('express');
 var router = express.Router();
 
-router.post('/photo/recipe/upload',upload.array(), function (req, res, next) {
+router.post('/photo/recipe/upload',upload.single('files'), function (req, res, next) {
     console.log("recipe photoUload -----req.url : " + req.url);
     console.log(req.body);
     console.log(req.headers);
