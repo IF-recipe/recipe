@@ -16,12 +16,15 @@ router.post('/photo/recipe/upload', function(req, res, next) {
 
     form.parse(req, function(err, fields, files) {
         Object.keys(fields).forEach(function(name){
-            console.log('got field named ' + name);
+            console.log('got field named ' + name + "// value : " + fields.value);
         });
 
         Object.keys(files).forEach(function(name) {
             console.log('got file named ' + name);
         });
+
+        console.log(fields);
+        console.log(files);
     });
 });
 
