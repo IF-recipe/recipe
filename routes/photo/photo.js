@@ -10,16 +10,9 @@ router.post('/photo/recipe/upload',upload.single('files'), function (req, res, n
     console.log(req.headers);
     console.log(req.params);
     console.log(req.query);
+    console.log(req.file);
     console.log(req.files);
     console.log("------------req end");
-    var storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, '/tmp/my-uploads')
-        },
-        filename: function (req, file, cb) {
-            cb(null, file.fieldname + '-' + Date.now())
-        }
-    })
 
 })
 
