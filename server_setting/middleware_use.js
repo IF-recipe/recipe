@@ -4,7 +4,7 @@
 
 exports.middlewareSetting = function(app, serverModule){
     // view engine setup
-    app.set('port', process.env.PORT || 2020);
+    app.set('port', process.env.PORT || 3500);
     app.set('views', serverModule.path.join(__dirname, '../views'));
     app.set('view engine', 'ejs');
 
