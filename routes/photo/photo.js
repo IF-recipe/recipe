@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.get('/photo/recipe/download', function(req, res, next){
     console.log("reciep photo DownLoad ------");
-    var stream = fs.createReadStream(__dirname + "/../uploads/b566fef04e0f557cc41573f97062d4f8");
+    var stream = fs.createReadStream(__dirname + "/../../photo/1.png");
     stream.pipe(res);
 });
 
@@ -19,6 +19,9 @@ router.post('/photo/recipe/upload',upload.single('files'), function (req, res, n
     console.log(req.file);
     console.log(req.files);
     console.log("------------req end");
+    /**
+     *  -add Mongo DB insert Query call
+     */
 
 })
 
