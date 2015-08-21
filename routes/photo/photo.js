@@ -16,22 +16,10 @@ router.post('/photo/recipe/upload',upload.single('files'), function (req, res, n
 
 })
 
-
-    //var form = new multiparty.Form();
-    //
-    //
-    //form.parse(req, function(err, fields, files) {
-    //    Object.keys(fields).forEach(function(name){
-    //        console.log('got field named ' + name + "// value : " + fields.value);
-    //    });
-    //
-    //    Object.keys(files).forEach(function(name) {
-    //        console.log('got file named ' + name);
-    //    });
-    //
-    //    console.log(fields);
-    //    console.log(files);
-    //});
+router.get("", function(req, res, nex){
+    var stream = fs.createReadStream(__dirname + "/../uploads/b566fef04e0f557cc41573f97062d4f8");
+    stream.pipe(res);
+});
 
 router.all('/photo/profile/upload', function(req, res, next) {
     console.log("profile photoUload -----");
