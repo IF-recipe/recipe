@@ -6,7 +6,7 @@ var db = mongo.mongoose.connect(config.mongodb.connectUrl).connection;
 
 db.on('error', console.error.bind(console, 'connection error -0-:'));
 db.once('open', function (callback) {
-    console.log(callback);
+    console.log("db open callback : "+callback);
 });
 
 var Schema = mongo.mongoose.Schema;
