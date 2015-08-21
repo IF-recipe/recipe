@@ -21,8 +21,4 @@ router.get("/photo/recipe/download", function(req, res, nex){
     stream.pipe(res);
 });
 
-router.all('/photo/profile/upload', function(req, res, next) {
-    console.log("profile photoUload -----");
-    console.log(req.query);
-});
 module.exports = router;
