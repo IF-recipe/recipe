@@ -6,7 +6,6 @@ var routes = require('../routes/index');
 var users = require('../routes/users');
 var recipe = require('../routes/recipe/recipe');
 var photo = require('../routes/photo/photo');
-var dw = require('../routes/photo/dw');
 
 
 exports.routeSetting = function(app){
@@ -14,5 +13,4 @@ exports.routeSetting = function(app){
     app.use('/rest', recipe);
     app.use('/rest', photo);
     app.use('/users', users);
-    app.use('/rest', dw);
 };
