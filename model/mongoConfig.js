@@ -10,7 +10,7 @@ var db = mongo.mongoose.connect(config.mongodb.connectUrl).connection;
 
 db.on('error', console.error.bind(console, 'connection error -0-:'));
 db.once('open', function (callback) {
-    console.log("aaa");
+    console.log(callback);
 });
 
 var Schema = mongo.mongoose.Schema;
