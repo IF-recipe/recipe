@@ -1,7 +1,3 @@
-/**
- * Created by parkbeomsoo on 15. 7. 30..
- */
-console.log("mongoConfig --call");
 var config = require('../server_setting/config');
 var mongo = {};
 
