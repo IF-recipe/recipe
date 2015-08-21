@@ -4,6 +4,12 @@ var upload = multer({dest : "uploads/"})
 var express = require('express');
 var router = express.Router();
 
+router.get('/photo/recipe/download', function(req, res, next){
+    console.log("reciep photo DownLoad ------");
+    var stream = fs.createReadStream(__dirname + "/../uploads/b566fef04e0f557cc41573f97062d4f8");
+    stream.pipe(res);
+});
+
 router.post('/photo/recipe/upload',upload.single('files'), function (req, res, next) {
     console.log("recipe photoUload -----req.url : " + req.url);
     console.log(req.body);
@@ -16,10 +22,6 @@ router.post('/photo/recipe/upload',upload.single('files'), function (req, res, n
 
 })
 
-router.get("/photo/recipe/download", function(req, res, next){
-    console.log("reciep photo DownLoad ------");
-    var stream = fs.createReadStream(__dirname + "/../uploads/b566fef04e0f557cc41573f97062d4f8");
-    stream.pipe(res);
-});
+
 
 module.exports = router;
