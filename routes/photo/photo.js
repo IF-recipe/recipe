@@ -6,7 +6,7 @@ var fs = require('fs');
 
 router.get('/photo/recipe/download', function(req, res, next){
     console.log("reciep photo DownLoad ------");
-    var stream = fs.createReadStream(__dirname + "/../../uploads/1");
+    var stream = fs.createReadStream(__dirname + "/../../uploads/f42b5ea95b164e4a7690925c46263c65");
     stream.pipe(res);
 });
 
