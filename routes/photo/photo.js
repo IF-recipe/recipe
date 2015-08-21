@@ -7,9 +7,8 @@ var upload = multer({dest : "uploads/"});
 
 router.get('/photo/recipe/download', function(req, res, next){
     console.log("reciep photo DownLoad ------");
+
     var stream = fs.createReadStream(__dirname + "/../../uploads/1");
-    res.setHeader('Content-disposition', 'attachment; filename=' + 1);
-    res.setHeader('Content-type', "jpeg");
     stream.pipe(res);
 });
 
