@@ -1,4 +1,3 @@
-console.log("config.js call")
 
 var config = {};
 /* Mongodb */

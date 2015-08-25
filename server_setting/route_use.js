@@ -2,13 +2,13 @@
  * Created by airnold on 15. 7. 30..
  */
 
-var routes = require('../routes/index');
-var users = require('../routes/users');
+var member = require('../routes/member/members');
+var sign = require('../routes/member/sign');
+
 
 exports.routeSetting = function(app){
 
-    app.use('/', routes);
-
-    app.use('/users', users);
+    app.use('/rest/sign', sign);
+    app.use('/rest/member', member);
 
 };

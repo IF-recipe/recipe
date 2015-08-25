@@ -1,8 +1,8 @@
 /**
  * Created by parkbeomsoo on 15. 7. 30..
  */
-console.log("mongoConfig --call");
-var config = require('../server_setting/config');
+
+var config = require('../server_setting/server_config/config');
 var mongo = {};
 
 mongo.mongoose = require('mongoose');
@@ -10,7 +10,7 @@ var db = mongo.mongoose.connect(config.mongodb.connectUrl).connection;
 
 db.on('error', console.error.bind(console, 'connection error -0-:'));
 db.once('open', function (callback) {
-    console.log("aaa");
+    console.log('aa');
 });
 
 var Schema = mongo.mongoose.Schema;
