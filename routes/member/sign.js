@@ -87,6 +87,7 @@ router.post('/signup', function(req,res, next){
         res.send(data);
     });
 
+
 });
 
 router.get('/signup/idcheck', function(req,res,next){

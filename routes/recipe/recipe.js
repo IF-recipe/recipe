@@ -21,7 +21,7 @@ router.get('/update', function(req, res, next) {
 
 router.get('/search', function(req, res, next) {
     console.log("search_recipe -----");
-    console.log(req.query.whos);
+
     var paramData = {};
     paramData.whos = req.query.whos;
     paramData.foodkinds = req.query.foodkinds;
