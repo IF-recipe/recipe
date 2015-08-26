@@ -13,9 +13,11 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "fs": "0.0.2",
+    "johayo-jwt": "0.0.5",
     "mongoose": "^4.1.0",
     "morgan": "~1.6.1",
     "multer": "^1.0.3",
+    "nimble": "0.0.2",
     "serve-favicon": "~2.3.0"
   }
 }

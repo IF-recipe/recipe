@@ -1,26 +1,36 @@
 var express = require('express');
 var router = express.Router();
+var recipeBiz = require('../../commonBiz/recipeBiz.js');
 
-router.post('/recipe/add', function(req, res, next) {
+router.post('/add', function(req, res, next) {
     console.log("add_recipe -----");
     console.log(req.query);
 });
 
-router.get('/recipe/delete', function(req, res, next) {
+router.get('/delete', function(req, res, next) {
     console.log("delete_recipe -----");
     console.log(req.query);
 
 });
 
-router.get('/recipe/update', function(req, res, next) {
+router.get('/update', function(req, res, next) {
     console.log("update_recipe -----");
     console.log(req.query);
 
 });
 
-router.get('/recipe/search', function(req, res, next) {
+router.get('/search', function(req, res, next) {
     console.log("search_recipe -----");
-    console.log(req.query);
+    console.log(req.query.whos);
+    var paramData = {};
+    paramData.whos = req.query.whos;
+    paramData.foodkinds = req.query.foodkinds;
+    paramData.id = req.query.id;
+
+    recipeBiz.getrecipedatabyParam(paramData, function(data){
+        res.send(data);
+    });
+
 });
 
 module.exports = router;

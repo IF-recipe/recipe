@@ -4,11 +4,13 @@
 
 var member = require('../routes/member/members');
 var sign = require('../routes/member/sign');
+var recipe = require('../routes/recipe/recipe');
 
 
 exports.routeSetting = function(app){
 
     app.use('/rest/sign', sign);
     app.use('/rest/member', member);
+    app.use('/rest/recipe', recipe);
 
 };
