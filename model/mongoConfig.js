@@ -93,7 +93,7 @@ mongo.schema.recipes = new Schema({
     _Id : Schema.Types.ObjectId,
     title : String,
     description : String,
-    complatephotopath : String,
+    completephotopath : String,
     stuffs : String,
     hashtag : [String],
     catergory : {
@@ -166,7 +166,7 @@ mongo.schema.order = new Schema({
  *  */
 mongo.model = {};
 mongo.model.member = mongo.mongoose.model('member', mongo.schema.member);
-mongo.model.recipes = mongo.mongoose.model('recipes', mongo.schema.recipes);
+mongo.model.recipes = mongo.mongoose.model('recipes', mongo.schema.recipe);
 mongo.model.order = mongo.mongoose.model('order', mongo.schema.order);
 
 module.exports = mongo;

@@ -24,4 +24,11 @@ recipeFunc.getrecipedatabyParam = function(paramData, callback){
     });
 }
 
+recipeFunc.addNewRecipe = function(paramData, callback){
+    console.log(paramData);
+    mongo.model.recipes.find({}, function (err, docs) {
+
+    });
+}
+
 module.exports = recipeFunc;
