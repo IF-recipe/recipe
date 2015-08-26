@@ -1,4 +1,4 @@
-var config = require('../server_setting/config');
+var config = require('../server_setting/server_config/config');
 var mongo = {};
 
 mongo.mongoose = require('mongoose');
