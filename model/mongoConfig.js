@@ -90,6 +90,7 @@ mongo.schema.member  = new Schema({
  * @type {mongo.mongoose.Schema}
  */
 mongo.schema.recipe = new Schema({
+    _Id : Schema.Types.ObjectId,
     title : String,
     description : String,
     complatephotopath : String,
