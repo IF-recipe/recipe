@@ -4,7 +4,7 @@ var recipeBiz = require('../../commonBiz/recipeBiz.js');
 
 router.post('/add', function(req, res, next) {
     console.log("add_recipe -----");
-    console.log(req.query);
+    console.log(req.body);
 });
 
 router.get('/delete', function(req, res, next) {

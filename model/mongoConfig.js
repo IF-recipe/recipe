@@ -90,20 +90,20 @@ mongo.schema.member  = new Schema({
  * @type {mongo.mongoose.Schema}
  */
 mongo.schema.recipe = new Schema({
-    _Id : Schema.Types.ObjectId,
+    _id : Schema.Types.ObjectId,
     title : String,
     description : String,
-    complatephotopath : String,
+    completephotopath : String,
     stuffs : String,
     hashtag : [String],
-    catergory : [{
+    catergory : {
         whos : String,
         foodkind : String
-    }],
+    },
     steps :[{
         step: Number,
-        photopath : [String],
-        content : [String]
+        photopath : String,
+        content : String
     }],
     reply : [{
         content : String,
@@ -166,7 +166,7 @@ mongo.schema.order = new Schema({
  *  */
 mongo.model = {};
 mongo.model.member = mongo.mongoose.model('member', mongo.schema.member);
-mongo.model.recipe = mongo.mongoose.model('recipe', mongo.schema.recipe);
+mongo.model.recipes = mongo.mongoose.model('recipes', mongo.schema.recipe);
 mongo.model.order = mongo.mongoose.model('order', mongo.schema.order);
 
 module.exports = mongo;
