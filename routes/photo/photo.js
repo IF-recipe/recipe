@@ -18,13 +18,10 @@ router.post('/recipe/upload', upload.single('files'), function (req, res, next) 
     var fileName = req.file.filename;
     var filePath = req.file.path;
     console.log("------------req end");
-
-    console.log("name : " + fileName)
-    console.log("path : " + filePath);
     /**
      *  -add Mongo DB update Query call
      */
-    recipeBiz.updatephotoPath(req.body, function(data){
+    recipeBiz.updatephotoPath(req.body.writer, function(data){
         console.log("-- updatephotoPath -- callback --");
         console.log(data);
         req.send(data);
