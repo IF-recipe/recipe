@@ -14,7 +14,6 @@ router.get('/recipe/download/:photoId', function(req, res, next){
 router.post('/recipe/upload', upload.single('files'), function (req, res, next) {
     console.log("recipe photo Upload -----req.url : " + req.url);
     console.log(req.body);
-    console.log(req.headers);
     console.log(req.file);
     var fileName = req.file.filename;
     var filePath = req.file.path;

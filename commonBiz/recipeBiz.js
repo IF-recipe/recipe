@@ -10,6 +10,7 @@
 
 var mongo = require('../model/mongoConfig.js');
 var recipeFunc = {};
+var mongoose = require('mongoose');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 
@@ -63,7 +64,8 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
 
 recipeFunc.updatephotoPath= function(data, callback){
     console.log("welcome to photo path ------");
-    console.log("Object Id = == ==" + mongoose.Types.ObjectId(data));
+    console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
+    console.log("Object Id 2= == ==" + ObjectId(data));
     mongo.model.recipes.find({ _id : mongoose.Types.ObjectId(data)}, function (err, docs) {
         console.log("find call back -------!!")
         console.log(docs);
