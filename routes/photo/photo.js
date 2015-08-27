@@ -3,6 +3,7 @@ var router = express.Router();
 var multer  = require('multer');
 var upload = multer({dest : "uploads/"});
 var fs = require('fs');
+var recipeBiz = require('../../commonBiz/recipeBiz.js');
 
 router.get('/recipe/download/:photoId', function(req, res, next){
     console.log("reciep photo DownLoad ------>", req.params.photoId);
@@ -22,8 +23,13 @@ router.post('/recipe/upload', upload.single('files'), function (req, res, next) 
     console.log("name : " + fileName)
     console.log("path : " + filePath);
     /**
-     *  -add Mongo DB insert Query call
+     *  -add Mongo DB update Query call
      */
+    recipeBiz.updatephotoPath(req.body, function(data){
+        console.log("-- updatephotoPath -- callback --");
+        console.log(data);
+        req.send(data);
+    });
 
 
 });
