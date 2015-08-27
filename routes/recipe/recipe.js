@@ -9,7 +9,6 @@ router.post('/add', function(req, res, next) {
         console.log("data ---" +data);
         res.send(data);
     });
-
 });
 
 router.get('/delete', function(req, res, next) {
