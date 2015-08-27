@@ -63,7 +63,7 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
 }
 
 recipeFunc.updatephotoPath= function(data, callback){
-    console.log("welcome to photo path ------");
+    console.log("welcome to photo path ------ "+data);
     //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
     //console.log("Object Id 2= == ==" + ObjectId(data));
     mongo.model.recipes.find({ '_id' : ObjectId(data.toString())}, function (err, docs) {
