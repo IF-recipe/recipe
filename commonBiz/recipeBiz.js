@@ -66,7 +66,7 @@ recipeFunc.updatephotoPath= function(data, callback){
     console.log("welcome to photo path ------");
     //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
     //console.log("Object Id 2= == ==" + ObjectId(data));
-    mongo.model.recipes.find({ _id : "ObjectId(\""+data+"\")"}, function (err, docs) {
+    mongo.model.recipes.find({ _id : data}, function (err, docs) {
         console.log("find call back -------!!")
         console.log(docs);
         callback("success");
