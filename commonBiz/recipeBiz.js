@@ -40,8 +40,8 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
     var new_recipe = new mongo.model.recipes({
         title : newRecipe.title,
         description : newRecipe.description,
-        catergory : {
-            whos : undefined,
+        category : {
+            whos : "모두",
             foodkind : newRecipe.foodkind
         },
         stuffs : newRecipe.stuffs,
