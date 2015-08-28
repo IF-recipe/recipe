@@ -24,8 +24,9 @@ router.post('/recipe/upload', upload.single('files'), function (req, res, next) 
     recipeBiz.updatephotoPath(req.body, req.file,function(data){
         console.log("-- updatephotoPath -- callback --start");
         console.log(data);
-        req.send(data);
         console.log("-- updatephotoPath -- callback --end");
+
+        res.send(data);
     });
     console.log("recipe photo upload -----end");
 
