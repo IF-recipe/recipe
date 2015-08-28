@@ -4,7 +4,7 @@ var recipeBiz = require('../../commonBiz/recipeBiz.js');
 
 router.post('/add', function(req, res, next) {
     console.log("add_recipe -- start");
-    //console.log(req.body);
+    console.log(req.body);
     recipeBiz.addNewRecipe(req.body, function(data){
         console.log("data ---" +data);
         res.send(data);

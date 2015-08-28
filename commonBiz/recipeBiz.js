@@ -37,11 +37,10 @@ recipeFunc.getrecipedatabyParam = function(paramData, callback){
 }
 
 recipeFunc.addNewRecipe = function(newRecipe, callback){
-    console.log("------add new Recipe -----");
+    console.log("------add new Recipe ----- compleStep :" + newRecipe.compleStep);
     var new_recipe = new mongo.model.recipes({
         title : newRecipe.title,
         description : newRecipe.description,
-        completephotopath : newRecipe.completephotopath,
         catergory : {
             whos : undefined,
             foodkind : newRecipe.foodkind
