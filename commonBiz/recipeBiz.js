@@ -75,11 +75,11 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
 recipeFunc.updatephotoPath= function(data, file, callback){
 
     console.log("welcome to photo path ------ start :"+data.recipeId+" // " + data.step);
-    console.log("-- file : "+file.filename+" // " + file.filePath);
+    console.log("-- file : "+file.filename+" // " + file.path);
     //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
     //console.log("Object Id 2= == ==" + ObjectId(data));
     var str = "steps."+ data.step+".photopath";
-    mongo.model.recipes.update({ '_id' : data.recipeId},{$set:{ str : file.filename}}, function (err, docs) {
+    mongo.model.recipes.update({ '_id' : data.recipeId}, {$set:{ "steps.0.photopath" : file.filename}}, function (err, docs) {
         console.log("find call back -------!!")
         console.log(docs);
         callback("success");
