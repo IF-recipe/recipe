@@ -10,7 +10,6 @@
 
 var mongo = require('../model/mongoConfig.js');
 var recipeFunc = {};
-var mongoose = require('mongoose');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 
@@ -79,6 +78,7 @@ recipeFunc.updatephotoPath= function(data, file, callback){
     //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
     //console.log("Object Id 2= == ==" + ObjectId(data));
     var str = "steps."+ data.step+".photopath";
+    console.log("index : " + str);
     mongo.model.recipes.update({ '_id' : ObjectId(data.recipeId)}, {$set:{ str : file.filename}}, function (err, docs) {
         console.log(docs);
         callback("success");
