@@ -10,7 +10,8 @@
 
 var mongo = require('../model/mongoConfig.js');
 var recipeFunc = {};
-
+var mongoose = require('mongoose');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 
 recipeFunc.getrecipedatabyParam = function(paramData, callback){
@@ -37,12 +38,14 @@ recipeFunc.getrecipedatabyParam = function(paramData, callback){
 
 recipeFunc.addNewRecipe = function(newRecipe, callback){
     console.log("------add new Recipe -----");
-    console.log(newRecipe);
-
     var new_recipe = new mongo.model.recipes({
         title : newRecipe.title,
         description : newRecipe.description,
         completephotopath : newRecipe.completephotopath,
+        catergory : {
+            whos : undefined,
+            foodkind : newRecipe.foodkind
+        },
         stuffs : newRecipe.stuffs,
         hashtag : newRecipe.hashtag,
         steps : newRecipe.steps,
@@ -55,16 +58,32 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
         cookingtime : newRecipe.cookingtime,
         saleinfo : undefined
     });
+    console.log(new_recipe);
     console.log("start save =====")
+
     new_recipe.save(function(err){
         if( err ){
             console.log(err);
             throw err;
         } else{
-            console.log("success");
-            callback('add new Recipe success');
+            console.log("success : " + new_recipe._id);
+            callback(new_recipe._id);
         }
     });
+
+}
+
+recipeFunc.updatephotoPath= function(data, callback){
+    console.log("welcome to photo path ------ "+data);
+    //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
+    //console.log("Object Id 2= == ==" + ObjectId(data));
+    mongo.model.recipes.find({ '_id' : data}, function (err, docs) {
+        console.log("find call back -------!!")
+        console.log(docs);
+        callback("success");
+    });
+
+    console.log("welcome to photo path ------ end ");
 
 }
 
