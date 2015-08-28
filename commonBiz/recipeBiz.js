@@ -78,7 +78,7 @@ recipeFunc.updatephotoPath= function(data, file, callback){
     console.log("-- file : "+file.filename+" // " + file.filePath);
     //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
     //console.log("Object Id 2= == ==" + ObjectId(data));
-    mongo.model.recipes.find({ '_id' : data.recipeId}, function (err, docs) {
+    mongo.model.recipes.update({ '_id' : data.recipeId},{$set:{ "steps[0].photopath" : file.filename}}, function (err, docs) {
         console.log("find call back -------!!")
         console.log(docs);
         callback("success");
