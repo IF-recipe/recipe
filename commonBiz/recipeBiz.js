@@ -14,14 +14,25 @@ var recipeFunc = {};
 
 
 recipeFunc.getrecipedatabyParam = function(paramData, callback){
-    mongo.model.recipes.find({
-            category : {
-                whos : "그들"
-            }
-        }
-        ,function (err, docs) {
-        callback(docs);
-    });
+    //all query
+    if(paramData.whos == "" && paramData.foodkind == ""){
+        mongo.model.recipes.find({},function (err, docs) {
+            callback(docs);
+        });
+    } else if(paramData.foodkind == ""){
+        mongo.model.recipes.find({
+            'category.whos' : paramData.whos
+        },function (err, docs) {
+            callback(docs);
+        });
+    } else {
+        mongo.model.recipes.find({
+            'category.whos' : paramData.whos,
+            'category.foodkind' : paramData.foodkind
+        },function (err, docs) {
+            callback(docs);
+        });
+    }
 }
 
 recipeFunc.addNewRecipe = function(newRecipe, callback){

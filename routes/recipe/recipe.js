@@ -30,8 +30,8 @@ router.get('/search', function(req, res, next) {
 
     var paramData = {};
     paramData.whos = req.query.whos;
-    paramData.foodkinds = req.query.foodkinds;
-    paramData.id = req.query.id;
+    paramData.foodkind = req.query.foodkind;
+    /*paramData.id = req.query.id;*/
 
     recipeBiz.getrecipedatabyParam(paramData, function(data){
         res.send(data);
