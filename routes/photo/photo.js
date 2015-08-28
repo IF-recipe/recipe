@@ -15,8 +15,6 @@ router.post('/recipe/upload', upload.single('files'), function (req, res, next) 
     console.log("recipe photo Upload -----start req.url : " + req.url);
     console.log(req.body);
     console.log(req.file);
-    var fileName = req.file.filename;
-    var filePath = req.file.path;
     console.log("------------req end");
     /**
      *  -add Mongo DB update Query call

@@ -65,7 +65,7 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
             throw err;
         } else{
             console.log("success : " + new_recipe);
-            callback(new_recipe._id);
+            callback(new_recipe);
         }
     });
 
@@ -79,7 +79,7 @@ recipeFunc.updatephotoPath= function(data, file, callback){
     //console.log("Object Id 2= == ==" + ObjectId(data));
     var str = "steps."+ data.step+".photopath";
     console.log("index : " + str);
-    mongo.model.recipes.update({ '_id' : ObjectId(data.recipeId)}, {$set:{ str : file.filename}}, function (err, docs) {
+    mongo.model.recipes.update({ '_id' : ObjectId(data.recipeId), "steps._id": ObjectId(data.stepId) }, {$set:{ "steps.$.photopath" : file.filename}}, function (err, docs) {
         console.log(docs);
         callback("success");
     });
