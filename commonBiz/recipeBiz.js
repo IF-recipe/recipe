@@ -64,7 +64,7 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
             console.log(err);
             throw err;
         } else{
-            console.log("success : " + new_recipe._id);
+            console.log("success : " + new_recipe);
             callback(new_recipe._id);
         }
     });
