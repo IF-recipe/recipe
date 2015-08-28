@@ -96,7 +96,7 @@ mongo.schema.recipes = new Schema({
     hashtag : [{
         name : String
     }],
-    catergory : {
+    category : {
         whos : String,
         foodkind : String
     },

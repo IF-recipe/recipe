@@ -72,14 +72,15 @@ recipeFunc.addNewRecipe = function(newRecipe, callback){
 }
 
 recipeFunc.updatephotoPath= function(data, file, callback){
-
-    console.log("welcome to photo path ------ start :"+data.recipeId+" // " + data.step);
-    console.log("-- file : "+file.filename+" // " + file.path);
-    //console.log("Object Id 1= == ==" + mongoose.Types.ObjectId(data));
-    //console.log("Object Id 2= == ==" + ObjectId(data));
-    var str = "steps."+ data.step+".photopath";
-    console.log("index : " + str);
-    mongo.model.recipes.update({ '_id' : ObjectId(data.recipeId), "steps._id": ObjectId(data.stepId) }, {$set:{ "steps.$.photopath" : file.filename}}, function (err, docs) {
+    /**
+     * data
+     *  .recipeId : 레시피 _id
+     *  .stepId : step _id
+     */
+    mongo.model.recipes.update({ '_id' : ObjectId(data.recipeId)
+                                , "steps._id": ObjectId(data.stepId) }
+                                , {$set:{ "steps.$.photopath" : file.filename}}
+                                , function (err, docs) {
         console.log(docs);
         callback("success");
     });
