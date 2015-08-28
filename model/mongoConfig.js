@@ -55,7 +55,6 @@ mongo.schema.member  = new Schema({
  * 레시피 Object - shcema
  * title : 레시피 제목
  * description : 요리 간단 설명
- * complatephotopath : 메인 사진
  * stuffs : 사용자 입력 재료
  * hashtag : 헤쉬 태그
  * * category : [{
@@ -93,7 +92,6 @@ mongo.schema.recipes = new Schema({
     _Id : Schema.Types.ObjectId,
     title : String,
     description : String,
-    completephotopath : String,
     stuffs : String,
     hashtag : [{
         name : String

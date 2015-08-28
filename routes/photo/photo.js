@@ -12,7 +12,7 @@ router.get('/recipe/download/:photoId', function(req, res, next){
 });
 
 router.post('/recipe/upload', upload.single('files'), function (req, res, next) {
-    console.log("recipe photo Upload -----req.url : " + req.url);
+    console.log("recipe photo Upload -----start req.url : " + req.url);
     console.log(req.body);
     console.log(req.file);
     var fileName = req.file.filename;
@@ -21,12 +21,13 @@ router.post('/recipe/upload', upload.single('files'), function (req, res, next) 
     /**
      *  -add Mongo DB update Query call
      */
-    recipeBiz.updatephotoPath(req.body.writer, function(data){
-        console.log("-- updatephotoPath -- callback --");
+    recipeBiz.updatephotoPath(req.body, req.file,function(data){
+        console.log("-- updatephotoPath -- callback --start");
         console.log(data);
         req.send(data);
+        console.log("-- updatephotoPath -- callback --end");
     });
-
+    console.log("recipe photo upload -----end");
 
 });
 
